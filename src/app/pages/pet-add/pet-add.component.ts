@@ -8,5 +8,5 @@ import { Component, OnInit } from '@angular/core';
 export class PetAddComponent implements OnInit {
   constructor() {}
 
-  ngOnIntest(): void {}
+  ngOnInit(): void {}
 }

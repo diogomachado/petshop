@@ -13,12 +13,14 @@ export class LoginComponent {
   constructor() {
     this.loginForm = new FormGroup({
       user: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
     });
   }
 
   onSubmit() {
     this.submitted = true;
-    console.log(this.loginForm.value, this.loginForm.valid);
   }
 }

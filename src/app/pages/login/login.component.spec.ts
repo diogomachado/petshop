@@ -43,16 +43,15 @@ describe('LoginComponent', () => {
     expect(component.loginForm.valid).toBeFalsy();
   }));
 
+  test('form should be invalid passing a wrong password', waitForAsync(() => {
+    component.loginForm.controls['user'].setValue('diogo');
+    component.loginForm.controls['password'].setValue('123');
+    expect(component.loginForm.valid).toBeFalsy();
+  }));
+
   test('form should be valid', waitForAsync(() => {
     component.loginForm.controls['user'].setValue('diogo');
     component.loginForm.controls['password'].setValue('1234');
     expect(component.loginForm.valid).toBeTruthy();
   }));
-
-  // test('should render title', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   expect(compiled.querySelector('.content span')?.textContent).toContain('petshop app is running!');
-  // });
 });
