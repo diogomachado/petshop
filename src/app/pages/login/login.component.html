@@ -1,1 +1,5 @@
-<p>login works!</p>
+<form id="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
+  <input type="text" name="user" formControlName="user">
+  <input type="password" name="password" formControlName="password">
+  <button mat-flat-button color="primary" type="submit" [disabled]="!loginForm.valid">Sign in</button>
+</form>
