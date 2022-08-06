@@ -8,16 +8,15 @@ describe('PetListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetListComponent ]
-    })
-    .compileComponents();
+      declarations: [PetListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PetListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 });

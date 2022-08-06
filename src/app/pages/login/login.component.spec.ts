@@ -20,16 +20,16 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set submitted true', waitForAsync(() => {
+  test('should set submitted true', waitForAsync(() => {
     component.onSubmit();
     expect(component.submitted).toBeTruthy();
   }));
 
-  it('should call the onSubmit method', waitForAsync(() => {
+  test('should call the onSubmit method', waitForAsync(() => {
     fixture.detectChanges();
     jest.spyOn(component, 'onSubmit');
     el = fixture.debugElement.query(By.css('button')).nativeElement;
@@ -37,19 +37,19 @@ describe('LoginComponent', () => {
     expect(component.onSubmit).toHaveBeenCalledTimes(0);
   }));
 
-  it('form should be invalid', waitForAsync(() => {
+  test('form should be invalid', waitForAsync(() => {
     component.loginForm.controls['user'].setValue('');
     component.loginForm.controls['password'].setValue('');
     expect(component.loginForm.valid).toBeFalsy();
   }));
 
-  it('form should be valid', waitForAsync(() => {
+  test('form should be valid', waitForAsync(() => {
     component.loginForm.controls['user'].setValue('diogo');
     component.loginForm.controls['password'].setValue('1234');
     expect(component.loginForm.valid).toBeTruthy();
   }));
 
-  // it('should render title', () => {
+  // test('should render title', () => {
   //   const fixture = TestBed.createComponent(AppComponent);
   //   fixture.detectChanges();
   //   const compiled = fixture.nativeElement as HTMLElement;
