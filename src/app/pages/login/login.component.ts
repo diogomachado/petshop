@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent {
   submitted = false;
   loginForm: FormGroup;
 
-  constructor() {
+  constructor(private router: Router) {
     this.loginForm = new FormGroup({
       user: new FormControl('', [Validators.required]),
       password: new FormControl('', [
@@ -22,5 +23,6 @@ export class LoginComponent {
 
   onSubmit() {
     this.submitted = true;
+    this.router.navigate(['/pets']);
   }
 }

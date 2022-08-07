@@ -10,6 +10,9 @@ import { PetAddComponent } from './pages/pet-add/pet-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { CharacterComponent } from './components/character/character.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { CharacterComponent } from './components/character/character.component';
     PetListComponent,
     PetAddComponent,
     CharacterComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,8 @@ import { CharacterComponent } from './components/character/character.component';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

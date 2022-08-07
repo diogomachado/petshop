@@ -18,12 +18,45 @@ body {
   color: #f8fafc;
 }
 
+$navbar-height: 64px;
+
 // Help wrapper classes
 .wrapper-full {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+.container {
+  position: absolute;
+  width: 98%;
+  background: #94a3b8;
+  height: calc(95vh - $navbar-height);
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  border-radius: 16px 16px 0 0;
+
+  @media (min-width: 992px) {
+    max-width: 1200px;
+  }
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px #64748b solid;
+
+    .title {
+      font-size: 17px;
+      color: #0f172a;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
 }
 
 // Help padding classes
@@ -71,6 +104,27 @@ body {
 
 .text-r {
   text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-i-center {
+  align-items: center;
+}
+
+// Util classes
+.no-margin {
+  margin: 0 !important;
 }
 
 // Animations for micro-interactions
