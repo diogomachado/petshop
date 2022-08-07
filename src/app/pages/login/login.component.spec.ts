@@ -54,4 +54,11 @@ describe('LoginComponent', () => {
     component.loginForm.controls['password'].setValue('1234');
     expect(component.loginForm.valid).toBeTruthy();
   }));
+
+  test('should the button submit change when submit the login', waitForAsync(() => {
+    component.submitted = true;
+    el = fixture.debugElement.query(By.css('button')).nativeElement;
+    fixture.detectChanges();
+    expect(el.textContent).toBe('Wait...');
+  }));
 });

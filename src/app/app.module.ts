@@ -9,6 +9,7 @@ import { PetListComponent } from './pages/pet-list/pet-list.component';
 import { PetAddComponent } from './pages/pet-add/pet-add.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { CharacterComponent } from './components/character/character.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
     LoginComponent,
     PetListComponent,
     PetAddComponent,
+    CharacterComponent,
   ],
   imports: [
     BrowserModule,
