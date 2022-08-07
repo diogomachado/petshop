@@ -13,6 +13,7 @@ import { CharacterComponent } from './components/character/character.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

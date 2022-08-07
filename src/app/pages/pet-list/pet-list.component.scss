@@ -1,0 +1,42 @@
+.pet-list {
+  list-style: none;
+  margin: 0;
+  padding: 12px 0 0 0;
+
+  .pet-list-item {
+    margin: 8px 16px;
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      padding: 1rem;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      background: #f8fafc;
+      border-radius: 6px;
+    }
+  }
+
+  .name {
+    margin: 0;
+  }
+}
+
+.label {
+  padding: 2px 5px;
+  border-radius: 6px;
+  color: #171717;
+
+  &.available {
+    background-color: #4ade80;
+  }
+  &.pending {
+    background-color: #facc15;
+  }
+  &.sold {
+    background-color: #fb923c;
+  }
+}

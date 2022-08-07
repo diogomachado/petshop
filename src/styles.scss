@@ -48,7 +48,9 @@ $navbar-height: 64px;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    border-bottom: 1px #64748b solid;
+    background: white;
+    box-shadow: 0 3px 10px rgba(100, 116, 139, 0.557);
+    border-radius: 16px 16px 0 0;
 
     .title {
       font-size: 17px;

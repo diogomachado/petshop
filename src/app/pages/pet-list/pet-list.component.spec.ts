@@ -1,3 +1,4 @@
+import { NavbarComponent } from './../../components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,7 +13,7 @@ describe('PetListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PetListComponent],
+      declarations: [PetListComponent, NavbarComponent],
       imports: [MatToolbarModule, MatIconModule, MatButtonModule],
     }).compileComponents();
 

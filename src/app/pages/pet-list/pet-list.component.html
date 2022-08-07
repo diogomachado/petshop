@@ -2,14 +2,31 @@
 
 <div class="container">
   <header>
-    <p class="title">All available pets</p>
     <button
       mat-flat-button
-      color="primary"
+      color="basic"
       class="add-button"
       type="button">
       <mat-icon class="logo">add</mat-icon>
       New pet
     </button>
+    <div>
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip selected>Available</mat-chip>
+        <mat-chip>Pendent</mat-chip>
+        <mat-chip>Sold</mat-chip>
+      </mat-chip-list>
+    </div>
   </header>
+
+  <section class="wrapper-list">
+    <ul class="pet-list">
+      <li class="pet-list-item" *ngFor="let pet of pets">
+        <button type="button">
+          <p class="name">{{ pet.name }}</p>
+          <span class="label available">{{ pet.status }}</span>
+      </button>
+      </li>
+    </ul>
+  </section>
 </div>

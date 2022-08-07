@@ -1,15 +1,16 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class NavbarComponent {
+  constructor(private router: Router) {}
+  logout() {
+    // TODO: action to logout
+    // ...
+    this.router.navigate(['/login']);
   }
-
 }
