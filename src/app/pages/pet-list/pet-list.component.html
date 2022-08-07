@@ -6,12 +6,13 @@
       mat-flat-button
       color="basic"
       class="add-button"
+      [routerLink]="['/add']"
       type="button">
       <mat-icon class="logo">add</mat-icon>
       New pet
     </button>
     <div>
-      <mat-chip-list aria-label="Fish selection">
+      <mat-chip-list aria-label="Status selection">
         <mat-chip selected>Available</mat-chip>
         <mat-chip>Pendent</mat-chip>
         <mat-chip>Sold</mat-chip>

@@ -1,1 +1,45 @@
-<p>pet-add works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+  <header>
+    <span class="title">New pet</span>
+    <button
+      mat-flat-button
+      color="warn"
+      class="add-button"
+      [routerLink]="['/pets']"
+      type="button">
+      Cancel
+    </button>
+  </header>
+
+  <section class="wrapper-add">
+    <div class="wrapper-form">
+      <form id="add-form" [formGroup]="addForm">
+
+        <div class="wrapper-status">
+          <p>Choose a status</p>
+          <mat-chip-list aria-label="Status selection">
+            <mat-chip color="accent" selected>Available</mat-chip>
+            <mat-chip color="accent">Pendent</mat-chip>
+            <mat-chip color="accent">Sold</mat-chip>
+          </mat-chip-list>
+        </div>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>URL of image</mat-label>
+          <input matInput placeholder="URL of image" formControlName="image">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Name of pet</mat-label>
+          <input matInput placeholder="Name of pet" formControlName="name">
+        </mat-form-field>
+
+        <div class="text-r">
+          <button mat-flat-button color="primary" type="submit" [disabled]="!addForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Register' }}</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>

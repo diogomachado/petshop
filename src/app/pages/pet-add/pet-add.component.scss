@@ -1,0 +1,21 @@
+.wrapper-add {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#add-form {
+  width: 320px;
+  padding: 1rem;
+  border-radius: 8px;
+
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+.wrapper-status {
+  margin-bottom: 18px;
+}
