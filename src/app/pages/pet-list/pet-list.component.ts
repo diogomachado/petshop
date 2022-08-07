@@ -38,6 +38,46 @@ export class PetListComponent {
       name: 'Mimi',
       status: PetStatus.Available,
     },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
+    {
+      name: 'Mimi',
+      status: PetStatus.Available,
+    },
   ];
 
   openModal() {}

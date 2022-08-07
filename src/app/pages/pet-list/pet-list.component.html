@@ -13,9 +13,9 @@
     </button>
     <div>
       <mat-chip-list aria-label="Status selection">
-        <mat-chip selected>Available</mat-chip>
-        <mat-chip>Pendent</mat-chip>
-        <mat-chip>Sold</mat-chip>
+        <mat-chip color="accent" selected>Available</mat-chip>
+        <mat-chip color="accent">Pendent</mat-chip>
+        <mat-chip color="accent">Sold</mat-chip>
       </mat-chip-list>
     </div>
   </header>
@@ -25,7 +25,7 @@
       <li class="pet-list-item" *ngFor="let pet of pets">
         <button type="button">
           <p class="name">{{ pet.name }}</p>
-          <span class="label available">{{ pet.status }}</span>
+          <mat-icon>info</mat-icon>
       </button>
       </li>
     </ul>
