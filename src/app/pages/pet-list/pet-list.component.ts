@@ -1,84 +1,31 @@
+import { PetSelectors } from './../../state/app.selectors';
+import { PetAction } from './../../state/app.actions';
 import { Component, OnInit } from '@angular/core';
-
-enum PetStatus {
-  Available = 'available',
-  Pending = 'pending',
-  Sold = 'sold',
-}
-interface Pet {
-  name: string;
-  status: PetStatus;
-}
+import { Select, Store } from '@ngxs/store';
+import { Pet, PetStatus } from '../../types/app.interfaces';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pet-list',
   templateUrl: './pet-list.component.html',
   styleUrls: ['./pet-list.component.scss'],
 })
-export class PetListComponent {
-  // TODO: mock data to test
-  pets: Pet[] = [
-    {
-      name: 'Bob',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Sasha',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Lion',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Tor',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-    {
-      name: 'Mimi',
-      status: PetStatus.Available,
-    },
-  ];
+export class PetListComponent implements OnInit {
+  petStatusSelected: PetStatus = PetStatus.Available;
+  @Select(PetSelectors.pets) pets$!: Observable<Pet[]> | null;
+  constructor(private store: Store) {}
 
-  openModal() {}
+  ngOnInit() {
+    this.store.dispatch(
+      new PetAction.FetchAllByStatusAction(this.petStatusSelected)
+    );
+
+    this.store.subscribe((state) => {
+      console.log('State subscribe', state);
+    });
+  }
+
+  openModal() {
+    this.store.dispatch(new PetAction.GetOnePetAction());
+  }
 }
