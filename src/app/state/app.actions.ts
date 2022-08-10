@@ -11,6 +11,11 @@ export namespace PetAction {
     constructor(public payload: Pet) {}
   }
 
+  export class GetOnePetFailedAction {
+    static readonly type = '[Pet] GetOnePet Failed';
+    constructor(public payload?: any) {}
+  }
+
   export class FetchAllByStatusAction {
     static readonly type = '[Pet] Fetch AllByStatus';
     constructor(public status: PetStatus) {}
@@ -19,6 +24,11 @@ export namespace PetAction {
   export class FetchAllByStatusSuccessAction {
     static readonly type = '[Pet] Fetch AllByStatus Success';
     constructor(public payload: Pet[]) {}
+  }
+
+  export class FetchAllByStatusFailedAction {
+    static readonly type = '[Pet] Fetch AllByStatus Failed';
+    constructor(public payload?: any) {}
   }
 }
 

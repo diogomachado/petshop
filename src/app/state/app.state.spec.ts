@@ -21,7 +21,7 @@ describe('Pet state tests', () => {
     service = TestBed.inject(PetDataService);
   }));
 
-  test('Get a pet with success', waitForAsync(() => {
+  test('should return a pet with success', waitForAsync(() => {
     const currentState = {
       ...getAppInitialState(),
     };
@@ -48,7 +48,73 @@ describe('Pet state tests', () => {
     expect(actual).toEqual(expectedState);
   }));
 
-  test.todo('Get a pet with error');
-  test.todo('Get a list of pet filtered using status');
-  test.todo('Get a list of pet filtered using status with error');
+  test('should return a empty pet', () => {
+    const currentState = {
+      ...getAppInitialState(),
+    };
+
+    const expectedState = {
+      ...getAppInitialState(),
+      pet: null,
+    };
+
+    store.dispatch(new DummySetState(currentState));
+
+    const action = new PetAction.GetOnePetFailedAction();
+    store.dispatch(action);
+
+    const actual = store.selectSnapshot((state) => state.pets);
+    expect(actual).toEqual(expectedState);
+  });
+
+  test('should return a list of pet', () => {
+    const currentState = {
+      ...getAppInitialState(),
+    };
+
+    const petList = [
+      <Pet>{
+        id: 1,
+        name: 'Bob',
+        status: PetStatus.Available,
+      },
+      <Pet>{
+        id: 2,
+        name: 'Tobby',
+        status: PetStatus.Available,
+      },
+    ];
+
+    const expectedState = {
+      ...getAppInitialState(),
+      pets: petList,
+    };
+
+    store.dispatch(new DummySetState(currentState));
+
+    const action = new PetAction.FetchAllByStatusSuccessAction(petList);
+    store.dispatch(action);
+
+    const actual = store.selectSnapshot((state) => state.pets);
+    expect(actual).toEqual(expectedState);
+  });
+
+  test('should return an empty list of pets', () => {
+    const currentState = {
+      ...getAppInitialState(),
+    };
+
+    const expectedState = {
+      ...getAppInitialState(),
+      pets: null,
+    };
+
+    store.dispatch(new DummySetState(currentState));
+
+    const action = new PetAction.FetchAllByStatusFailedAction();
+    store.dispatch(action);
+
+    const actual = store.selectSnapshot((state) => state.pets);
+    expect(actual).toEqual(expectedState);
+  });
 });

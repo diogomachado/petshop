@@ -20,7 +20,6 @@ export class AppPetState {
 
   @Action(PetAction.GetOnePetAction)
   getOnePet(ctx: StateContext<App>, action: PetAction.GetOnePetAction) {
-    // Call the API
     this.petDataService
       .getPet(action.id)
       .pipe(
@@ -33,10 +32,8 @@ export class AppPetState {
     ctx: StateContext<App>,
     action: PetAction.GetOnePetSuccessAction
   ) {
-    // Current state
     const state = ctx.getState();
 
-    // Update the state
     ctx.setState({
       ...state,
       pet: action.payload,
@@ -48,16 +45,25 @@ export class AppPetState {
     ctx: StateContext<App>,
     action: PetAction.FetchAllByStatusAction
   ) {
-    // Current state
+    this.petDataService
+      .getListByStatus(action.status)
+      .pipe(
+        mergeMap((x) =>
+          ctx.dispatch(new PetAction.FetchAllByStatusSuccessAction(x))
+        )
+      );
+  }
+
+  @Action(PetAction.FetchAllByStatusSuccessAction)
+  async fetchAllByStatuSuccess(
+    ctx: StateContext<App>,
+    action: PetAction.FetchAllByStatusSuccessAction
+  ) {
     const state = ctx.getState();
 
-    const pets$ = this.petDataService.getListByStatus(action.status);
-    pets$.subscribe((petsReturned) => {
-      // Update the state
-      ctx.setState({
-        ...state,
-        pets: petsReturned,
-      });
+    ctx.setState({
+      ...state,
+      pets: action.payload,
     });
   }
 }
