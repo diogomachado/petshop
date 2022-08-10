@@ -1,10 +1,9 @@
 import { PetDataService } from './../services/pet-data.service';
-import { Pet, PetStatus } from '../../app/types/app.interfaces';
 import { PetAction } from './app.actions';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { App } from '../types/app.interfaces';
-import { firstValueFrom, lastValueFrom, take } from 'rxjs';
+import { catchError, mergeMap } from 'rxjs';
 
 export const getAppInitialState = (): App => ({
   pets: null,
@@ -21,18 +20,26 @@ export class AppPetState {
 
   @Action(PetAction.GetOnePetAction)
   getOnePet(ctx: StateContext<App>, action: PetAction.GetOnePetAction) {
+    // Call the API
+    this.petDataService
+      .getPet(action.id)
+      .pipe(
+        mergeMap((x) => ctx.dispatch(new PetAction.GetOnePetSuccessAction(x)))
+      );
+  }
+
+  @Action(PetAction.GetOnePetSuccessAction)
+  getOnePetSuccessAction(
+    ctx: StateContext<App>,
+    action: PetAction.GetOnePetSuccessAction
+  ) {
     // Current state
     const state = ctx.getState();
 
-    const pets$ = this.petDataService.getPet(1);
-    pets$.subscribe((petReturned) => {
-      // Update the state
-      ctx.setState({
-        ...state,
-        pet: petReturned,
-      });
-
-      console.log('The currently state', state);
+    // Update the state
+    ctx.setState({
+      ...state,
+      pet: action.payload,
     });
   }
 
@@ -46,15 +53,11 @@ export class AppPetState {
 
     const pets$ = this.petDataService.getListByStatus(action.status);
     pets$.subscribe((petsReturned) => {
-      console.log(petsReturned);
-
       // Update the state
       ctx.setState({
         ...state,
         pets: petsReturned,
       });
-
-      console.log('The currently state', state);
     });
   }
 }

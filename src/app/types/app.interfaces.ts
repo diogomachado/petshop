@@ -3,6 +3,10 @@ export interface App {
   pet: Pet | null;
 }
 
+export interface AppApp {
+  readonly app: App;
+}
+
 export enum PetStatus {
   Available = 'available',
   Pending = 'pending',

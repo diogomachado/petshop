@@ -1,13 +1,29 @@
-import { Pet, PetStatus } from '../types/app.interfaces';
+import { App, Pet, PetStatus } from '../types/app.interfaces';
 
 export namespace PetAction {
   export class GetOnePetAction {
     static readonly type = '[Pet] GetOnePet';
-    constructor() {}
+    constructor(public id: number) {}
+  }
+
+  export class GetOnePetSuccessAction {
+    static readonly type = '[Pet] GetOnePet Success';
+    constructor(public payload: Pet) {}
   }
 
   export class FetchAllByStatusAction {
     static readonly type = '[Pet] Fetch AllByStatus';
     constructor(public status: PetStatus) {}
   }
+
+  export class FetchAllByStatusSuccessAction {
+    static readonly type = '[Pet] Fetch AllByStatus Success';
+    constructor(public payload: Pet[]) {}
+  }
+}
+
+// Dummy for unit testing purpose
+export class DummySetState {
+  static readonly type = '[Pet] Dummy SetState';
+  constructor(public payload: App) {}
 }
