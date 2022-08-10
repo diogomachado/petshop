@@ -22,14 +22,24 @@
   </header>
 
   <section class="wrapper-list">
-    <ul class="pet-list" *ngIf="!isLoading">
-      <li class="pet-list-item" *ngFor="let pet of pets$ | async">
-        <button type="button" (click)="openModal(pet.id)">
-          <p class="name">{{ pet.name }}</p>
-          <mat-icon>info</mat-icon>
-      </button>
-      </li>
-    </ul>
+
+    <mat-grid-list cols="4" rowHeight="410px" *ngIf="!isLoading">
+      <mat-grid-tile class="pet-list-tile" *ngFor="let pet of pets$ | async">
+        <div class="wrapper-tile">
+          <mat-card class="pet-card">
+            <mat-card-header>
+              <mat-card-title>{{ pet.name }}</mat-card-title>
+              <mat-card-subtitle>{{ pet.status }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+            <mat-card-actions [align]="'end'">
+              <button mat-button (click)="openModal(pet.id)">Details</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+
     <div class="loader-wrapper" *ngIf="isLoading">
       <ng-lottie width="300px" height="300px" [options]="lottieConfig"></ng-lottie>
     </div>

@@ -1,39 +1,5 @@
-.pet-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  .pet-list-item {
-    margin: 8px 0;
-
-    button {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      outline: none;
-      padding: 1rem;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      background: #1e293b;
-      color: #fff;
-      border-radius: 6px;
-
-      &:hover {
-        opacity: 0.95;
-      }
-
-      &:active {
-        transform: scale(0.995);
-        filter: blur(0.5px);
-      }
-    }
-  }
-
-  .name {
-    margin: 0;
-    font-weight: bold;
-  }
+.wrapper-tile {
+  padding: 12px;
 }
 
 .loader-wrapper {

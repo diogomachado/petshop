@@ -18,6 +18,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { environment } from 'src/environments/environment';
 import { AppPetState } from './state/app.state';
 import { HttpClientModule } from '@angular/common/http';
@@ -52,6 +54,8 @@ export function playerFactory() {
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
+    MatCardModule,
+    MatGridListModule,
     NgxsModule.forRoot([AppPetState], {
       developmentMode: !environment.production,
     }),

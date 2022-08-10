@@ -34,6 +34,7 @@ $navbar-height: 64px;
   background: #fff;
   border-radius: 16px;
   animation: slide-in-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+  padding-bottom: 3rem;
 
   @media (min-width: 992px) {
     max-width: 1200px;
@@ -49,6 +50,7 @@ $navbar-height: 64px;
     padding: 1rem 0;
     background: white;
     border-bottom: 1px rgba(100, 116, 139, 0.557) dotted;
+    z-index: 10;
 
     .title {
       font-size: 17px;
