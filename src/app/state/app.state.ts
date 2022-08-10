@@ -24,7 +24,8 @@ export class AppPetState {
       .getPet(action.id)
       .pipe(
         mergeMap((x) => ctx.dispatch(new PetAction.GetOnePetSuccessAction(x)))
-      );
+      )
+      .subscribe();
   }
 
   @Action(PetAction.GetOnePetSuccessAction)

@@ -18,3 +18,7 @@ export interface Pet {
   name: string;
   status: PetStatus;
 }
+
+export interface DialogData {
+  pet: Pet;
+}

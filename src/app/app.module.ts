@@ -17,11 +17,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { AppPetState } from './state/app.state';
 import { HttpClientModule } from '@angular/common/http';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
+import { PetDetailsDialogComponent } from './components/dialogs/pet-details-dialog/pet-details-dialog.component';
 
 export function playerFactory() {
   return player;
@@ -34,6 +36,7 @@ export function playerFactory() {
     PetAddComponent,
     CharacterComponent,
     NavbarComponent,
+    PetDetailsDialogComponent,
   ],
   imports: [
     HttpClientModule,
@@ -48,6 +51,7 @@ export function playerFactory() {
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     NgxsModule.forRoot([AppPetState], {
       developmentMode: !environment.production,
     }),
