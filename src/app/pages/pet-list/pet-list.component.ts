@@ -37,7 +37,7 @@ export class PetListComponent implements OnInit {
     });
   }
 
-  openModal() {
-    this.store.dispatch(new PetAction.GetOnePetAction());
+  openModal(id: number) {
+    this.store.dispatch(new PetAction.GetOnePetAction(id));
   }
 }

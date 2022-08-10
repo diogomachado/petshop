@@ -24,7 +24,7 @@
   <section class="wrapper-list">
     <ul class="pet-list" *ngIf="!isLoading">
       <li class="pet-list-item" *ngFor="let pet of pets$ | async">
-        <button type="button" (click)="openModal()">
+        <button type="button" (click)="openModal(pet.id)">
           <p class="name">{{ pet.name }}</p>
           <mat-icon>info</mat-icon>
       </button>

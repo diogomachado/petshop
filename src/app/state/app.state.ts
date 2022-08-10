@@ -3,7 +3,7 @@ import { PetAction } from './app.actions';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { App } from '../types/app.interfaces';
-import { catchError, mergeMap } from 'rxjs';
+import { catchError, mergeMap, tap } from 'rxjs';
 
 export const getAppInitialState = (): App => ({
   pets: null,
@@ -51,11 +51,12 @@ export class AppPetState {
         mergeMap((x) =>
           ctx.dispatch(new PetAction.FetchAllByStatusSuccessAction(x))
         )
-      );
+      )
+      .subscribe();
   }
 
   @Action(PetAction.FetchAllByStatusSuccessAction)
-  async fetchAllByStatuSuccess(
+  async fetchAllByStatusSuccess(
     ctx: StateContext<App>,
     action: PetAction.FetchAllByStatusSuccessAction
   ) {
