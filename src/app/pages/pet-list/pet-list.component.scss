@@ -1,10 +1,10 @@
 .pet-list {
   list-style: none;
   margin: 0;
-  padding: 12px 0 0 0;
+  padding: 0;
 
   .pet-list-item {
-    margin: 8px 16px;
+    margin: 8px 0;
 
     button {
       display: flex;
@@ -15,7 +15,8 @@
       width: 100%;
       border: none;
       cursor: pointer;
-      background: #fff;
+      background: #1e293b;
+      color: #fff;
       border-radius: 6px;
 
       &:hover {
@@ -35,18 +36,9 @@
   }
 }
 
-.label {
-  padding: 2px 5px;
-  border-radius: 6px;
-  color: #171717;
-
-  &.available {
-    background-color: #4ade80;
-  }
-  &.pending {
-    background-color: #facc15;
-  }
-  &.sold {
-    background-color: #fb923c;
-  }
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
 }

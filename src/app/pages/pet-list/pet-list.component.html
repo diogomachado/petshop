@@ -2,26 +2,27 @@
 
 <div class="container">
   <header>
-    <button
-      mat-flat-button
-      color="basic"
-      class="add-button"
-      [routerLink]="['/add']"
-      type="button">
-      <mat-icon class="logo">add</mat-icon>
-      New pet
-    </button>
     <div>
+      <label class="filter-title">Filter by:</label>
       <mat-chip-list aria-label="Status selection">
         <mat-chip color="accent" selected>Available</mat-chip>
         <mat-chip color="accent">Pendent</mat-chip>
         <mat-chip color="accent">Sold</mat-chip>
       </mat-chip-list>
     </div>
+    <button
+      mat-flat-button
+      color="primary"
+      class="add-button"
+      [routerLink]="['/add']"
+      type="button">
+      <mat-icon class="logo">add</mat-icon>
+      New pet
+    </button>
   </header>
 
   <section class="wrapper-list">
-    <ul class="pet-list">
+    <ul class="pet-list" *ngIf="!isLoading">
       <li class="pet-list-item" *ngFor="let pet of pets$ | async">
         <button type="button" (click)="openModal()">
           <p class="name">{{ pet.name }}</p>
@@ -29,5 +30,8 @@
       </button>
       </li>
     </ul>
+    <div class="loader-wrapper" *ngIf="isLoading">
+      <ng-lottie width="300px" height="300px" [options]="lottieConfig"></ng-lottie>
+    </div>
   </section>
 </div>

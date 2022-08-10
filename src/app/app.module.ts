@@ -20,6 +20,12 @@ import { MatInputModule } from '@angular/material/input';
 import { environment } from 'src/environments/environment';
 import { AppPetState } from './state/app.state';
 import { HttpClientModule } from '@angular/common/http';
+import { LottieModule } from 'ngx-lottie';
+import player from 'lottie-web';
+
+export function playerFactory() {
+  return player;
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgxsModule.forRoot([AppPetState], {
       developmentMode: !environment.production,
     }),
+    LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [],
   bootstrap: [AppComponent],

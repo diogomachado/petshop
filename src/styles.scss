@@ -15,7 +15,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  color: #f8fafc;
+  color: #171717;
 }
 
 $navbar-height: 64px;
@@ -29,17 +29,11 @@ $navbar-height: 64px;
 }
 
 .container {
-  position: absolute;
-  width: 98%;
-  background: #1e293b;
-  height: calc(88vh - $navbar-height);
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 0;
-  border-radius: 16px 16px 0 0;
+  position: relative;
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
   animation: slide-in-bottom 0.75s cubic-bezier(0.645, 0.045, 0.355, 1) both;
-  overflow: scroll;
-  z-index: 10;
 
   @media (min-width: 992px) {
     max-width: 1200px;
@@ -52,12 +46,9 @@ $navbar-height: 64px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 1rem 0;
     background: white;
-    box-shadow: 0 3px 10px rgba(100, 116, 139, 0.557);
-    border-radius: 16px 16px 0 0;
-    z-index: 11;
-    border: 1px rgba(100, 116, 139, 0.557) solid;
+    border-bottom: 1px rgba(100, 116, 139, 0.557) dotted;
 
     .title {
       font-size: 17px;
