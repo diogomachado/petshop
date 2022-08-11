@@ -1,3 +1,9 @@
+import { MatButtonModule } from '@angular/material/button';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PetDetailsDialogComponent } from './pet-details-dialog.component';
@@ -8,16 +14,24 @@ describe('PetDetailsDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PetDetailsDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [PetDetailsDialogComponent],
+      providers: [
+        { provide: MatDialogRef, useValue: {} },
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+      ],
+      imports: [MatButtonModule, MatDialogModule],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PetDetailsDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  test('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  test('should verify dialogRef is defined', () => {
+    expect(component.dialogRef).toBeDefined();
   });
 });
