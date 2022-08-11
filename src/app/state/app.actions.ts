@@ -1,6 +1,27 @@
+import { APIResponse, User } from './../types/app.interfaces';
 import { App, Pet, PetStatus } from '../types/app.interfaces';
 
 export namespace PetAction {
+  export class LoginAction {
+    static readonly type = '[Pet] Login';
+    constructor(public user: User) {}
+  }
+
+  export class LoginSuccessAction {
+    static readonly type = '[Pet] Login Success';
+    constructor(public payload: APIResponse) {}
+  }
+
+  export class LogoutAction {
+    static readonly type = '[Pet] Logout';
+    constructor() {}
+  }
+
+  export class LogoutSuccessAction {
+    static readonly type = '[Pet] Logout Success';
+    constructor(public payload: APIResponse) {}
+  }
+
   export class GetOnePetAction {
     static readonly type = '[Pet] GetOnePet';
     constructor(public id: number) {}

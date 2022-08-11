@@ -1,5 +1,7 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { PetAction } from '../../state/app.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +9,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store) {}
   logout() {
-    // TODO: action to logout
-    // ...
+    this.store.dispatch(new PetAction.LogoutAction());
     this.router.navigate(['/login']);
   }
 }

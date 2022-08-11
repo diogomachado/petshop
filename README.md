@@ -49,4 +49,4 @@ ng test --coverage
 
 ## Improvements
 
-TODO
+- Add localStorage to save the user data

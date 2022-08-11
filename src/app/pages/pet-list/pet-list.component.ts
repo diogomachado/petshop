@@ -4,9 +4,10 @@ import { PetAction } from './../../state/app.actions';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Pet, PetStatus } from '../../types/app.interfaces';
-import { filter, Observable, take } from 'rxjs';
+import { filter, Observable } from 'rxjs';
 import { AnimationOptions } from 'ngx-lottie';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-list',
@@ -40,13 +41,9 @@ export class PetListComponent implements OnInit {
 
     this.pet$.pipe(filter((x) => x != null)).subscribe((petData) => {
       if (petData != null) {
-        const dialogRef = this.dialog.open(PetDetailsDialogComponent, {
+        this.dialog.open(PetDetailsDialogComponent, {
           width: '450px',
           data: petData,
-        });
-
-        dialogRef.afterClosed().subscribe((result) => {
-          console.log('The dialog was closed', result);
         });
       }
     });

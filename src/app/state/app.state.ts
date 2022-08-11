@@ -3,11 +3,12 @@ import { PetAction } from './app.actions';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { App } from '../types/app.interfaces';
-import { catchError, mergeMap, tap } from 'rxjs';
+import { mergeMap } from 'rxjs';
 
 export const getAppInitialState = (): App => ({
   pets: null,
   pet: null,
+  userLogged: false,
 });
 
 @State<App>({
@@ -17,6 +18,42 @@ export const getAppInitialState = (): App => ({
 @Injectable()
 export class AppPetState {
   constructor(private petDataService: PetDataService) {}
+
+  @Action(PetAction.LoginAction)
+  login(ctx: StateContext<App>, action: PetAction.LoginAction) {
+    this.petDataService
+      .login(action.user)
+      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.LoginSuccessAction(x))))
+      .subscribe();
+  }
+
+  @Action(PetAction.LoginSuccessAction)
+  loginSuccess(ctx: StateContext<App>, action: PetAction.LoginSuccessAction) {
+    const state = ctx.getState();
+
+    ctx.setState({
+      ...state,
+      userLogged: action.payload.code == 200,
+    });
+  }
+
+  @Action(PetAction.LogoutAction)
+  logout(ctx: StateContext<App>, action: PetAction.LogoutAction) {
+    this.petDataService
+      .logout()
+      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.LogoutSuccessAction(x))))
+      .subscribe();
+  }
+
+  @Action(PetAction.LogoutSuccessAction)
+  logoutSuccess(ctx: StateContext<App>, action: PetAction.LogoutSuccessAction) {
+    const state = ctx.getState();
+
+    ctx.setState({
+      ...state,
+      userLogged: !(action.payload.code == 200),
+    });
+  }
 
   @Action(PetAction.GetOnePetAction)
   getOnePet(ctx: StateContext<App>, action: PetAction.GetOnePetAction) {
@@ -29,7 +66,7 @@ export class AppPetState {
   }
 
   @Action(PetAction.GetOnePetSuccessAction)
-  getOnePetSuccessAction(
+  getOnePetSuccess(
     ctx: StateContext<App>,
     action: PetAction.GetOnePetSuccessAction
   ) {
