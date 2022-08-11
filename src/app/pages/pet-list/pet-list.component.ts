@@ -6,11 +6,7 @@ import { Select, Store } from '@ngxs/store';
 import { Pet, PetStatus } from '../../types/app.interfaces';
 import { filter, Observable, take } from 'rxjs';
 import { AnimationOptions } from 'ngx-lottie';
-import {
-  MatDialog,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pet-list',
