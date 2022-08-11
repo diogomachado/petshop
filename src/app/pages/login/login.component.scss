@@ -2,7 +2,11 @@
 
 :host {
   display: block;
-  background: $primaryColor;
+  background: url("../../../assets/img/paw_pattern.jpeg");
+}
+
+.title {
+  font-weight: bold;
 }
 
 .wrapper-login {
@@ -15,23 +19,4 @@
   width: 320px;
   animation: scale-in-center 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0.65s
     both;
-}
-
-#login-form {
-  input[type="text"],
-  input[type="password"] {
-    width: 100%;
-    background: #1e293b;
-    color: #f8fafc;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    outline: none;
-
-    &:focus {
-      transition: background 300ms linear;
-      background: #0f172a;
-    }
-  }
 }

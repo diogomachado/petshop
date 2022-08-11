@@ -4,10 +4,16 @@
       <app-character></app-character>
     </div>
     <form id="login-form" (ngSubmit)="onSubmit()" [formGroup]="loginForm" novalidate>
-
+      <h1 class="title">Petshop</h1>
       <div class="login-inputs margin-b-1">
-        <input type="text" name="user" class="margin-b"  placeholder="Username" formControlName="user">
-        <input type="password" name="password" placeholder="Password" formControlName="password">
+        <mat-form-field class="full-w" appearance="legacy">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="Username" formControlName="user">
+        </mat-form-field>
+        <mat-form-field class="full-w" appearance="legacy">
+          <mat-label>Password</mat-label>
+          <input matInput placeholder="Password" formControlName="password">
+        </mat-form-field>
       </div>
 
       <div class="text-r">

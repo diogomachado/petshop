@@ -129,6 +129,10 @@ $navbar-height: 64px;
   margin: 0 !important;
 }
 
+.full-w {
+  width: 100%;
+}
+
 // Animations for micro-interactions
 @keyframes scale-in-center {
   0% {
