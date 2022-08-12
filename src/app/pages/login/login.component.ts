@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +15,11 @@ export class LoginComponent implements OnInit {
   submitted = false;
   loginForm: FormGroup;
 
-  constructor(private router: Router, private store: Store) {
+  constructor(
+    private router: Router,
+    private store: Store,
+    private title: Title
+  ) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [
@@ -25,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Petshop – Login');
     this.store.subscribe((state) => {
       if (state.pets.userLogged) {
         this.router.navigate(['/pets']);

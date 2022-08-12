@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { Pet, PetStatus } from './../../types/app.interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,7 +19,8 @@ export class PetAddComponent implements OnInit {
   constructor(
     private store: Store,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private title: Title
   ) {
     this.addForm = new FormGroup({
       image: new FormControl('', [Validators.required]),
@@ -31,7 +33,9 @@ export class PetAddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.title.setTitle('Petshop – Create a new pet');
+  }
 
   selectStatus(status: PetStatus) {
     this.addForm.controls['status'].setValue(status);

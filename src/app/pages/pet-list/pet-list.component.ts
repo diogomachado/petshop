@@ -7,6 +7,7 @@ import { Pet, PetStatus } from '../../types/app.interfaces';
 import { filter, Observable } from 'rxjs';
 import { AnimationOptions } from 'ngx-lottie';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-pet-list',
@@ -23,9 +24,14 @@ export class PetListComponent implements OnInit {
   @Select(PetSelectors.pets) pets$!: Observable<Pet[]>;
   @Select(PetSelectors.pet) pet$!: Observable<Pet>;
 
-  constructor(private store: Store, public dialog: MatDialog) {}
+  constructor(
+    private store: Store,
+    public dialog: MatDialog,
+    private title: Title
+  ) {}
 
   ngOnInit() {
+    this.title.setTitle('Petshop – List of pets');
     this.store.dispatch(
       new PetAction.FetchAllByStatusAction(this.petStatusSelected)
     );
