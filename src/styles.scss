@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "./styles/variables";
+
 *,
 *:before,
 *:after {
@@ -131,6 +133,14 @@ $navbar-height: 64px;
 
 .full-w {
   width: 100%;
+}
+
+// Custom material
+.mat-flat-button.mat-primary:not(.mat-button-disabled),
+.mat-raised-button.mat-primary:not(.mat-button-disabled),
+.mat-fab.mat-primary:not(.mat-button-disabled),
+.mat-mini-fab.mat-primary:not(.mat-button-disabled) {
+  background: $primaryColor !important;
 }
 
 // Animations for micro-interactions
