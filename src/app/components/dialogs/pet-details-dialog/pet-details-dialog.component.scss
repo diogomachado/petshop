@@ -1,0 +1,16 @@
+.block-info {
+  border-bottom: 1px black dotted;
+  margin-bottom: 0.75rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h3 {
+    margin: 0;
+    font-weight: bold;
+  }
+  p {
+    margin: 0 0 12px 0;
+  }
+}

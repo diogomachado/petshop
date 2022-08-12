@@ -47,8 +47,3 @@ export interface User {
   username: string;
   password: string;
 }
-
-// Dialog
-export interface DialogData {
-  pet: Pet;
-}
