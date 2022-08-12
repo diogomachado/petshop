@@ -17,8 +17,8 @@
 
   <section class="wrapper-list">
 
-    <mat-grid-list cols="4" rowHeight="410px" *ngIf="!isLoading">
-      <mat-grid-tile class="pet-list-tile" *ngFor="let pet of pets$ | async">
+    <div class="grid-pets" *ngIf="!isLoading">
+      <div *ngFor="let pet of pets$ | async">
         <div class="wrapper-tile">
           <mat-card class="pet-card">
             <mat-card-header>
@@ -31,8 +31,8 @@
             </mat-card-actions>
           </mat-card>
         </div>
-      </mat-grid-tile>
-    </mat-grid-list>
+      </div>
+    </div>
 
     <div class="loader-wrapper" *ngIf="isLoading">
       <ng-lottie width="300px" height="300px" [options]="lottieConfig"></ng-lottie>

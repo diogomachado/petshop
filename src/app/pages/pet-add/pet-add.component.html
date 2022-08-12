@@ -3,14 +3,6 @@
 <div class="container">
   <header>
     <span class="title">Create a new pet</span>
-    <button
-      mat-flat-button
-      color="warn"
-      class="add-button"
-      [routerLink]="['/pets']"
-      type="button">
-      Cancel
-    </button>
   </header>
 
   <section class="wrapper-add">
@@ -49,7 +41,17 @@
             mat-flat-button
             color="primary"
             type="submit"
+            class="margin-r"
             [disabled]="!addForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Register' }}</button>
+
+          <button
+            mat-flat-button
+            color="warn"
+            class="add-button"
+            [routerLink]="['/pets']"
+            type="button">
+            Cancel
+          </button>
         </div>
       </form>
     </div>
