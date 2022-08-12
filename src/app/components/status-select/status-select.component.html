@@ -1,6 +1,18 @@
 <label class="filter-title">{{ title }}</label>
 <mat-chip-list aria-label="Status selection">
-  <mat-chip (click)="selectStatus(petStatus.Available)" color="accent" selected>Available</mat-chip>
-  <mat-chip (click)="selectStatus(petStatus.Pending)" color="accent">Pendent</mat-chip>
-  <mat-chip (click)="selectStatus(petStatus.Sold)" color="accent">Sold</mat-chip>
+  <mat-chip
+    (click)="selectStatus(petStatus.Available)"
+    color="accent"
+    [selected]="selectedOption == petStatus.Available"
+  >Available</mat-chip>
+  <mat-chip
+    (click)="selectStatus(petStatus.Pending)"
+    color="accent"
+    [selected]="selectedOption == petStatus.Pending"
+  >Pendent</mat-chip>
+  <mat-chip
+    (click)="selectStatus(petStatus.Sold)"
+    color="accent"
+    [selected]="selectedOption == petStatus.Sold"
+    >Sold</mat-chip>
 </mat-chip-list>

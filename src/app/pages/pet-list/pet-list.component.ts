@@ -52,4 +52,12 @@ export class PetListComponent implements OnInit {
   openModal(id: number) {
     this.store.dispatch(new PetAction.GetOnePetAction(id));
   }
+
+  filterList(status: PetStatus) {
+    this.petStatusSelected = status;
+
+    this.store.dispatch(
+      new PetAction.FetchAllByStatusAction(this.petStatusSelected)
+    );
+  }
 }
