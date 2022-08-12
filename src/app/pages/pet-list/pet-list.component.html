@@ -2,14 +2,7 @@
 
 <div class="container">
   <header>
-    <div>
-      <label class="filter-title">Filter by:</label>
-      <mat-chip-list aria-label="Status selection">
-        <mat-chip color="accent" selected>Available</mat-chip>
-        <mat-chip color="accent">Pendent</mat-chip>
-        <mat-chip color="accent">Sold</mat-chip>
-      </mat-chip-list>
-    </div>
+    <app-status-select></app-status-select>
     <button
       mat-raised-button
       color="primary"

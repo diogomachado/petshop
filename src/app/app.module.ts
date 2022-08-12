@@ -27,6 +27,7 @@ import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { PetDetailsDialogComponent } from './components/dialogs/pet-details-dialog/pet-details-dialog.component';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { StatusSelectComponent } from './components/status-select/status-select.component';
 
 export function playerFactory() {
   return player;
@@ -40,6 +41,7 @@ export function playerFactory() {
     CharacterComponent,
     NavbarComponent,
     PetDetailsDialogComponent,
+    StatusSelectComponent,
   ],
   imports: [
     HttpClientModule,

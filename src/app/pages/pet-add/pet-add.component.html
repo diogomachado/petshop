@@ -18,12 +18,7 @@
       <form id="add-form" [formGroup]="addForm">
 
         <div class="wrapper-status">
-          <p>Choose a status</p>
-          <mat-chip-list aria-label="Status selection">
-            <mat-chip color="accent" selected>Available</mat-chip>
-            <mat-chip color="accent">Pendent</mat-chip>
-            <mat-chip color="accent">Sold</mat-chip>
-          </mat-chip-list>
+          <app-status-select title="Choose a status:"></app-status-select>
         </div>
 
         <mat-form-field appearance="legacy">
