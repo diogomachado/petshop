@@ -4,7 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Libraries used
 
-TODO
+- Angular Material
+- Lottie
+- FakerJS
+- Cypress
+- @ngxs/storage-plugin
 
 ## Running the project
 
@@ -41,6 +45,9 @@ ng serve
 
 ## Tests
 
+- Jest
+- Cypress (e2e)
+
 To generate the coverage reports, just run the command below:
 
 ```
@@ -52,3 +59,5 @@ ng test --coverage
 - Add a way to add more than one image where add a new pet
 - Validate category
 - Validate tags
+- Show the first image on the list, but the fake API don't return a URL valid, so I'd should to create a directive to provide a fallback image when the URL don't load correctly
+- Add more coverage of tests
