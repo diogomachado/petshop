@@ -49,10 +49,7 @@ export class AppPetState {
   logoutSuccess(ctx: StateContext<App>, action: PetAction.LogoutSuccessAction) {
     const state = ctx.getState();
 
-    ctx.setState({
-      ...state,
-      userLogged: !(action.payload.code == 200),
-    });
+    ctx.setState(getAppInitialState());
   }
 
   @Action(PetAction.GetOnePetAction)
@@ -112,16 +109,5 @@ export class AppPetState {
       .addPet(action.payload)
       .pipe(mergeMap((x) => ctx.dispatch(new PetAction.AddPetSuccessAction(x))))
       .subscribe();
-  }
-
-  @Action(PetAction.AddPetSuccessAction)
-  addPetSuccess(ctx: StateContext<App>, action: PetAction.AddPetSuccessAction) {
-    const state = ctx.getState();
-
-    console.log('should update the state pets...');
-    // ctx.setState({
-    //   ...state,
-    //   pets: action.payload,
-    // });
   }
 }

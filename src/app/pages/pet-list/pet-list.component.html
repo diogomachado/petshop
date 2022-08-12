@@ -34,6 +34,10 @@
       </div>
     </div>
 
+    <div class="empty-wrapper" *ngIf="!(pets$ | async) && !isLoading">
+      <h1>something wrong happened :(</h1>
+    </div>
+
     <div class="loader-wrapper" *ngIf="isLoading">
       <ng-lottie width="300px" height="300px" [options]="lottieConfig"></ng-lottie>
     </div>
