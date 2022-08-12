@@ -12,6 +12,9 @@ export class NavbarComponent {
   constructor(private router: Router, private store: Store) {}
   logout() {
     this.store.dispatch(new PetAction.LogoutAction());
-    this.router.navigate(['/login']);
+
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 1000);
   }
 }
