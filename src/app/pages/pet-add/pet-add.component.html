@@ -15,24 +15,41 @@
 
   <section class="wrapper-add">
     <div class="wrapper-form">
-      <form id="add-form" [formGroup]="addForm">
+      <form id="add-form" [formGroup]="addForm" (ngSubmit)="handleSubmit()">
 
         <div class="wrapper-status">
-          <app-status-select title="Choose a status:"></app-status-select>
+          <app-status-select title="Choose a status:" (statusSelectChange)="selectStatus($event)"></app-status-select>
         </div>
 
         <mat-form-field appearance="legacy">
-          <mat-label>URL of image</mat-label>
-          <input matInput placeholder="URL of image" formControlName="image">
+          <mat-label>Name of pet</mat-label>
+          <input id="form-name" matInput placeholder="Name of pet" formControlName="name">
         </mat-form-field>
 
         <mat-form-field appearance="legacy">
-          <mat-label>Name of pet</mat-label>
-          <input matInput placeholder="Name of pet" formControlName="name">
+          <mat-label>URL of image</mat-label>
+          <input id="form-url" matInput placeholder="URL of image" formControlName="image">
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Category</mat-label>
+          <input id="form-category" matInput placeholder="Category" formControlName="category">
+          <mat-hint>Cats, Dogs, Lions, or Rabbits</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy" class="padding-b-2">
+          <mat-label>Tags</mat-label>
+          <input id="form-tags" matInput placeholder="Tags" formControlName="tags">
+          <mat-hint>Use comma to register more than one tag</mat-hint>
         </mat-form-field>
 
         <div class="text-r">
-          <button mat-flat-button color="primary" type="submit" [disabled]="!addForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Register' }}</button>
+          <button
+            id="btn-form-add"
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="!addForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Register' }}</button>
         </div>
       </form>
     </div>

@@ -35,6 +35,7 @@
     "@angular/cli": "~14.1.0",
     "@angular/compiler-cli": "^14.1.0",
     "@briebug/jest-schematic": "^4.0.0",
+    "@faker-js/faker": "^7.4.0",
     "@types/jest": "latest",
     "jest": "latest",
     "typescript": "~4.7.2"

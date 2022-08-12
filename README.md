@@ -49,4 +49,6 @@ ng test --coverage
 
 ## Improvements
 
-- Add localStorage to save the user data
+- Add a way to add more than one image where add a new pet
+- Validate category
+- Validate tags

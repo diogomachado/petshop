@@ -1,6 +1,11 @@
 <h1 mat-dialog-title>Pet informations</h1>
 <div mat-dialog-content>
   <div class="block-info">
+    <div class="photo-grid">
+      <img *ngFor="let photo of data.photoUrls" class="full-w" [src]="photo" alt="">
+    </div>
+  </div>
+  <div class="block-info">
     <h3>Name</h3>
     <p>{{ data.name }}</p>
   </div>

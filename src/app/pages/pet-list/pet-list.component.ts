@@ -7,7 +7,7 @@ import { Pet, PetStatus } from '../../types/app.interfaces';
 import { filter, Observable } from 'rxjs';
 import { AnimationOptions } from 'ngx-lottie';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Event, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-list',
@@ -59,5 +59,10 @@ export class PetListComponent implements OnInit {
     this.store.dispatch(
       new PetAction.FetchAllByStatusAction(this.petStatusSelected)
     );
+  }
+
+  callbackImage(event: any) {
+    event.src = 'http://localhost:4200/assets/img/category/dogs.jpg';
+    console.log(event);
   }
 }

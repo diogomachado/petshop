@@ -14,3 +14,14 @@
     margin: 0 0 12px 0;
   }
 }
+
+.photo-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-bottom: 1rem;
+
+  img {
+    border-radius: 12px;
+  }
+}

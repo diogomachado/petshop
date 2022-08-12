@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('termsheet beta tests', () => {
+describe('login e2e test', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4200/login');
   });
