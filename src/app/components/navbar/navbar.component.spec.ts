@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { RouterTestingModule } from '@angular/router/testing';
+import { NgxsModule } from '@ngxs/store';
+import { AppPetState } from '../../state/app.state';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -18,7 +21,14 @@ describe('NavbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [NavbarComponent],
-      imports: [MatToolbarModule, MatIconModule, MatButtonModule],
+      imports: [
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        RouterTestingModule,
+        NgxsModule.forRoot([AppPetState]),
+        HttpClientModule,
+      ],
     }).compileComponents();
 
     location = TestBed.inject(Location);

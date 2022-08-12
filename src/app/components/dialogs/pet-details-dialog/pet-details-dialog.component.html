@@ -7,18 +7,18 @@
   </div>
   <div class="block-info">
     <h3>Name</h3>
-    <p>{{ data.name }}</p>
+    <p>{{ data?.name }}</p>
   </div>
 
   <div class="block-info">
     <h3>Category</h3>
-    <p>{{ data.category.name }}</p>
+    <p>{{ data?.category?.name }}</p>
   </div>
 
   <div class="block-info">
     <h3>Tags</h3>
     <mat-chip-list aria-label="Fish selection">
-      <mat-chip *ngFor="let tag of data.tags">{{ tag.name }}</mat-chip>
+      <mat-chip *ngFor="let tag of data?.tags">{{ tag?.name }}</mat-chip>
     </mat-chip-list>
   </div>
 </div>

@@ -1,3 +1,4 @@
+import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import {
   MatDialogRef,
@@ -19,7 +20,7 @@ describe('PetDetailsDialogComponent', () => {
         { provide: MatDialogRef, useValue: {} },
         { provide: MAT_DIALOG_DATA, useValue: {} },
       ],
-      imports: [MatButtonModule, MatDialogModule],
+      imports: [MatButtonModule, MatDialogModule, MatChipsModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PetDetailsDialogComponent);
