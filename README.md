@@ -37,7 +37,11 @@ export const environment = {
 };
 ```
 
-Running the app
+Installing dependencies and running the app
+
+```
+npm i
+```
 
 ```
 ng serve
