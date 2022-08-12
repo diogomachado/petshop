@@ -7,7 +7,7 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +23,18 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.router.navigate(['/']);
-
-    // TODO: check if userLogged
-    return false;
+    const user$ = this.store.selectOnce<boolean>(
+      (state) => state.pets.userLogged
+    );
+    return user$.pipe(
+      tap((userLogged) => {
+        if (userLogged) {
+          return true;
+        } else {
+          this.router.navigate(['/']);
+          return false;
+        }
+      })
+    );
   }
 }

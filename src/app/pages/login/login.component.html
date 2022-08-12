@@ -8,16 +8,16 @@
       <div class="login-inputs margin-b-1">
         <mat-form-field class="full-w" appearance="legacy">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="Username" formControlName="user">
+          <input matInput placeholder="Username" formControlName="username" id="form-username">
         </mat-form-field>
         <mat-form-field class="full-w" appearance="legacy">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="Password" formControlName="password">
+          <input matInput placeholder="Password" formControlName="password" id="form-password">
         </mat-form-field>
       </div>
 
       <div class="text-r">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Log in' }}</button>
+        <button id="btn-form-login" mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid || submitted">{{ (submitted) ? 'Wait...' :  'Log in' }}</button>
       </div>
     </form>
   </div>
