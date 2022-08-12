@@ -1,6 +1,10 @@
-import { PetStatus } from './../../types/app.interfaces';
+import { Pet, PetStatus } from './../../types/app.interfaces';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngxs/store';
+import { PetAction } from '../../state/app.actions';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-pet-add',
@@ -11,7 +15,11 @@ export class PetAddComponent implements OnInit {
   submitted = false;
   addForm: FormGroup;
 
-  constructor() {
+  constructor(
+    private store: Store,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {
     this.addForm = new FormGroup({
       image: new FormControl('', [Validators.required]),
       name: new FormControl('', [Validators.required]),
@@ -30,6 +38,22 @@ export class PetAddComponent implements OnInit {
   }
 
   handleSubmit() {
-    console.log(this.addForm.value);
+    const dataForm = <Pet>{
+      category: {
+        name: 'Dogs',
+      },
+      name: this.addForm.controls['name'].value,
+      photoUrls: [this.addForm.controls['image'].value],
+      tags: [
+        {
+          name: 'Calm',
+        },
+      ],
+      status: this.addForm.controls['status'].value,
+    };
+
+    this.store.dispatch(new PetAction.AddPetAction(dataForm));
+    this.router.navigate(['/pets']);
+    this.snackBar.open('Pet registered with success!');
   }
 }

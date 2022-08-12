@@ -7,7 +7,6 @@ import { Pet, PetStatus } from '../../types/app.interfaces';
 import { filter, Observable } from 'rxjs';
 import { AnimationOptions } from 'ngx-lottie';
 import { MatDialog } from '@angular/material/dialog';
-import { Event, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pet-list',

@@ -51,6 +51,16 @@ export namespace PetAction {
     static readonly type = '[Pet] Fetch AllByStatus Failed';
     constructor(public payload?: any) {}
   }
+
+  export class AddPetAction {
+    static readonly type = '[Pet] AddPet';
+    constructor(public payload: Pet) {}
+  }
+
+  export class AddPetSuccessAction {
+    static readonly type = '[Pet] AddPet Success';
+    constructor(public payload: Pet) {}
+  }
 }
 
 // Dummy for unit testing purpose

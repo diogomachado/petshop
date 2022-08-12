@@ -105,4 +105,23 @@ export class AppPetState {
       pets: action.payload,
     });
   }
+
+  @Action(PetAction.AddPetAction)
+  addPet(ctx: StateContext<App>, action: PetAction.AddPetAction) {
+    this.petDataService
+      .addPet(action.payload)
+      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.AddPetSuccessAction(x))))
+      .subscribe();
+  }
+
+  @Action(PetAction.AddPetSuccessAction)
+  addPetSuccess(ctx: StateContext<App>, action: PetAction.AddPetSuccessAction) {
+    const state = ctx.getState();
+
+    console.log('should update the state pets...');
+    // ctx.setState({
+    //   ...state,
+    //   pets: action.payload,
+    // });
+  }
 }

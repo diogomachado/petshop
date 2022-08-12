@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { AppPetState } from './state/app.state';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,6 +60,7 @@ export function playerFactory() {
     MatDialogModule,
     MatCardModule,
     MatGridListModule,
+    MatSnackBarModule,
     NgxsModule.forRoot([AppPetState], {
       developmentMode: !environment.production,
     }),

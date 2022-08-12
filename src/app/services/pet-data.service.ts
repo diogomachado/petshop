@@ -33,4 +33,8 @@ export class PetDataService {
       `${this.apiPath}/v2/pet/findByStatus?status=${status}`
     );
   }
+
+  addPet(payload: Pet): Observable<Pet> {
+    return this.http.post<Pet>(`${this.apiPath}/v2/pet`, payload);
+  }
 }

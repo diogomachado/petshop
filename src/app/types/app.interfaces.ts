@@ -26,12 +26,12 @@ export enum PetStatus {
 }
 
 export interface PetCategory {
-  id: number;
+  id?: number;
   name: string;
 }
 
 export interface PetTag {
-  id: number;
+  id?: number;
   name: string;
 }
 
