@@ -58,6 +58,8 @@ export class PetAddComponent implements OnInit {
 
     this.store.dispatch(new PetAction.AddPetAction(dataForm));
     this.router.navigate(['/pets']);
-    this.snackBar.open('Pet registered with success!');
+    this.snackBar.open('Pet registered with success!', undefined, {
+      duration: 4000,
+    });
   }
 }

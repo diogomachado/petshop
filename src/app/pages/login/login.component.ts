@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { PetAction } from '../../state/app.actions';
 import { User } from '../../types/app.interfaces';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store,
-    private title: Title
+    private title: Title,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = new FormGroup({
       username: new FormControl('', [Validators.required]),
@@ -41,5 +43,8 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.store.dispatch(new PetAction.LoginAction(<User>this.loginForm.value));
+    this.snackBar.open('Welcome', undefined, {
+      duration: 3000,
+    });
   }
 }
