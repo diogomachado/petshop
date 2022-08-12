@@ -54,6 +54,12 @@ To generate the coverage reports, just run the command below:
 ng test --coverage
 ```
 
+Running e2e tests:
+
+```
+npm run cypress
+```
+
 ## Improvements
 
 - Add a way to add more than one image where add a new pet
