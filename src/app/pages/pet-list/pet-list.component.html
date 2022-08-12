@@ -24,7 +24,7 @@
               <mat-card-title>{{ pet.name }}</mat-card-title>
               <mat-card-subtitle>{{ pet.status }}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+            <img mat-card-image src="./assets/img/category/{{ pet.category.name | lowercase }}.jpg">
             <mat-card-actions [align]="'end'">
               <button mat-button (click)="openModal(pet.id)">Details</button>
             </mat-card-actions>
