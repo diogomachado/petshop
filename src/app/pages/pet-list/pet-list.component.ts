@@ -14,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./pet-list.component.scss'],
 })
 export class PetListComponent implements OnInit {
+  isToOpenModal = false;
   isLoading = true;
   lottieConfig: AnimationOptions = {
     path: './assets/lottie/65014-dog-walking.json',
@@ -39,7 +40,7 @@ export class PetListComponent implements OnInit {
     });
 
     this.pet$.pipe(filter((x) => x != null)).subscribe((petData) => {
-      if (petData != null) {
+      if (petData != null && this.isToOpenModal) {
         this.dialog.open(PetDetailsDialogComponent, {
           width: '450px',
           data: petData,
@@ -49,6 +50,7 @@ export class PetListComponent implements OnInit {
   }
 
   openModal(id: number) {
+    this.isToOpenModal = true;
     this.store.dispatch(new PetAction.GetOnePetAction(id));
   }
 
