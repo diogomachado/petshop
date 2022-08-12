@@ -26,6 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LottieModule } from 'ngx-lottie';
 import player from 'lottie-web';
 import { PetDetailsDialogComponent } from './components/dialogs/pet-details-dialog/pet-details-dialog.component';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 export function playerFactory() {
   return player;
@@ -59,6 +60,7 @@ export function playerFactory() {
     NgxsModule.forRoot([AppPetState], {
       developmentMode: !environment.production,
     }),
+    NgxsStoragePluginModule.forRoot(),
     LottieModule.forRoot({ player: playerFactory }),
   ],
   providers: [],
