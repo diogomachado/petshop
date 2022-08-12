@@ -42,17 +42,20 @@ export class PetAddComponent implements OnInit {
   }
 
   handleSubmit() {
+    let tags = this.addForm.controls['tags'].value.split(',');
+    tags = tags.map((item: string) => {
+      return {
+        name: item,
+      };
+    });
+
     const dataForm = <Pet>{
       category: {
-        name: 'Dogs',
+        name: this.addForm.controls['category'].value,
       },
       name: this.addForm.controls['name'].value,
       photoUrls: [this.addForm.controls['image'].value],
-      tags: [
-        {
-          name: 'Calm',
-        },
-      ],
+      tags: tags,
       status: this.addForm.controls['status'].value,
     };
 
