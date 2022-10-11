@@ -69,6 +69,6 @@ npm run cypress
 - Add a way to add more than one image where add a new pet
 - Validate category
 - Validate tags
-- Show the first image on the list, but the fake API don't return a URL valid, so I'd should to create a directive to provide a fallback image when the URL don't load correctly
+- Show the first image on the list, but the fake API doesn't return a URL valid, so I should create a directive to provide a fallback image when the URL doesn't load correctly
 - Add more coverage of tests
-- Unsubscribe unnecessary subscritions
+- Unsubscribe unnecessary subscriptions
