@@ -6,6 +6,7 @@ import { Store } from '@ngxs/store';
 import { PetAction } from '../../state/app.actions';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { categoryValidator } from '../../validators/category-validator';
 
 @Component({
   selector: 'app-pet-add',
@@ -28,7 +29,7 @@ export class PetAddComponent implements OnInit {
       status: new FormControl(PetStatus.Available.toString(), [
         Validators.required,
       ]),
-      category: new FormControl('', [Validators.required]),
+      category: new FormControl('', [Validators.required, categoryValidator()]),
       tags: new FormControl('', [Validators.required]),
     });
   }

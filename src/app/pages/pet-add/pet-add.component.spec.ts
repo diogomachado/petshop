@@ -13,7 +13,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NgxsModule } from '@ngxs/store';
 import { AppPetState } from '../../state/app.state';
 
-import { PetAddComponent } from './pet-add.component';
+import PetAddComponent from './pet-add.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('PetAddComponent', () => {

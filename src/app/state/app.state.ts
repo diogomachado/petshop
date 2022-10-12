@@ -1,9 +1,9 @@
 import { PetDataService } from './../services/pet-data.service';
 import { PetAction } from './app.actions';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Action, State, StateContext } from '@ngxs/store';
 import { App } from '../types/app.interfaces';
-import { mergeMap } from 'rxjs';
+import { mergeMap, Subscription, take } from 'rxjs';
 
 export const getAppInitialState = (): App => ({
   pets: null,
@@ -16,15 +16,29 @@ export const getAppInitialState = (): App => ({
   defaults: getAppInitialState(),
 })
 @Injectable()
-export class AppPetState {
+export class AppPetState implements OnDestroy {
+  loginSubscription: Subscription | undefined;
+  logoutSubscription: Subscription | undefined;
+  getPetSubscription: Subscription | undefined;
+  getListByStatusSubscription: Subscription | undefined;
+  addPetSubscription: Subscription | undefined;
+
   constructor(private petDataService: PetDataService) {}
+
+  ngOnDestroy() {
+    this.loginSubscription?.unsubscribe();
+    this.logoutSubscription?.unsubscribe();
+    this.getPetSubscription?.unsubscribe();
+    this.getListByStatusSubscription?.unsubscribe();
+    this.addPetSubscription?.unsubscribe();
+  }
 
   @Action(PetAction.LoginAction)
   login(ctx: StateContext<App>, action: PetAction.LoginAction) {
-    this.petDataService
+    this.loginSubscription = this.petDataService
       .login(action.user)
-      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.LoginSuccessAction(x))))
-      .subscribe();
+      .pipe(take(1))
+      .subscribe((x) => ctx.dispatch(new PetAction.LoginSuccessAction(x)));
   }
 
   @Action(PetAction.LoginSuccessAction)
@@ -39,10 +53,10 @@ export class AppPetState {
 
   @Action(PetAction.LogoutAction)
   logout(ctx: StateContext<App>, action: PetAction.LogoutAction) {
-    this.petDataService
+    this.logoutSubscription = this.petDataService
       .logout()
-      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.LogoutSuccessAction(x))))
-      .subscribe();
+      .pipe(take(1))
+      .subscribe((x) => ctx.dispatch(new PetAction.LogoutSuccessAction(x)));
   }
 
   @Action(PetAction.LogoutSuccessAction)
@@ -54,12 +68,10 @@ export class AppPetState {
 
   @Action(PetAction.GetOnePetAction)
   getOnePet(ctx: StateContext<App>, action: PetAction.GetOnePetAction) {
-    this.petDataService
+    this.getPetSubscription = this.petDataService
       .getPet(action.id)
-      .pipe(
-        mergeMap((x) => ctx.dispatch(new PetAction.GetOnePetSuccessAction(x)))
-      )
-      .subscribe();
+      .pipe(take(1))
+      .subscribe((x) => ctx.dispatch(new PetAction.GetOnePetSuccessAction(x)));
   }
 
   @Action(PetAction.GetOnePetSuccessAction)
@@ -80,14 +92,12 @@ export class AppPetState {
     ctx: StateContext<App>,
     action: PetAction.FetchAllByStatusAction
   ) {
-    this.petDataService
+    this.getListByStatusSubscription = this.petDataService
       .getListByStatus(action.status)
-      .pipe(
-        mergeMap((x) =>
-          ctx.dispatch(new PetAction.FetchAllByStatusSuccessAction(x))
-        )
-      )
-      .subscribe();
+      .pipe(take(1))
+      .subscribe((x) =>
+        ctx.dispatch(new PetAction.FetchAllByStatusSuccessAction(x))
+      );
   }
 
   @Action(PetAction.FetchAllByStatusSuccessAction)
@@ -105,9 +115,9 @@ export class AppPetState {
 
   @Action(PetAction.AddPetAction)
   addPet(ctx: StateContext<App>, action: PetAction.AddPetAction) {
-    this.petDataService
+    this.addPetSubscription = this.petDataService
       .addPet(action.payload)
-      .pipe(mergeMap((x) => ctx.dispatch(new PetAction.AddPetSuccessAction(x))))
-      .subscribe();
+      .pipe(take(1))
+      .subscribe((x) => ctx.dispatch(new PetAction.AddPetSuccessAction(x)));
   }
 }

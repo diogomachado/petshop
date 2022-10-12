@@ -18,7 +18,17 @@ describe('PetDetailsDialogComponent', () => {
       declarations: [PetDetailsDialogComponent],
       providers: [
         { provide: MatDialogRef, useValue: {} },
-        { provide: MAT_DIALOG_DATA, useValue: {} },
+        {
+          provide: MAT_DIALOG_DATA,
+          useValue: {
+            id: 1,
+            name: 'João',
+            category: 'Dogs',
+            status: 'Available',
+            tags: ['Lorem ipsum'],
+            photoUrls: 'http://lorem.com',
+          },
+        },
       ],
       imports: [MatButtonModule, MatDialogModule, MatChipsModule],
     }).compileComponents();

@@ -25,6 +25,13 @@ export enum PetStatus {
   Sold = 'sold',
 }
 
+export enum PetCategoryEnum {
+  Cats = 'cats',
+  Dogs = 'dogs',
+  Lions = 'lions',
+  Rabbits = 'rabbits',
+}
+
 export interface PetCategory {
   id?: number;
   name: string;
