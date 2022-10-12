@@ -117,4 +117,25 @@ describe('Pet state tests', () => {
     const actual = store.selectSnapshot((state) => state.pets);
     expect(actual).toEqual(expectedState);
   });
+
+  test('should set userLogged with false in the state after logoutSuccess()', () => {
+    const spy = jest.spyOn(service, 'logout');
+    const currentState = {
+      ...getAppInitialState(),
+    };
+
+    const expectedState = {
+      ...getAppInitialState(),
+      userLogged: false,
+    };
+
+    store.dispatch(new DummySetState(currentState));
+
+    const action = new PetAction.LogoutAction();
+    store.dispatch(action);
+
+    const actual = store.selectSnapshot((state) => state.pets);
+    expect(actual).toEqual(expectedState);
+    expect(spy).toHaveBeenCalled();
+  });
 });
